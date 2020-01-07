@@ -45,13 +45,6 @@ def main():
     obj2.material = Material(color(0,1,0,1), "TestMaterial2")
     obj1.add_child(obj2)
 
-    # Specify the rotation of the object. It will rotate 15 degrees around the axis given, 
-    # every second
-    angle = 15
-    axis = vector3(1,0.7,0.2)
-    axis = vector3(0,1,0)
-    axis.normalize()
-
     # Timer
     delta_time = 0
     prev_time = time.time()
@@ -64,9 +57,49 @@ def main():
             if (event.type == pygame.QUIT):
                 # Exits the application immediately
                 return
-            elif (event.type == pygame.KEYDOWN):
-                if (event.key == pygame.K_ESCAPE):
-                    return
+
+
+        #gets key pressed
+        rotationKey = pygame.key.get_pressed()
+        translationKey = pygame.key.get_pressed()
+        
+        # if rotation key is pressed
+        if (rotationKey):
+            angle = 50
+            if rotationKey[pygame.K_LEFT]:
+                axis = vector3(0,-1,0)  #left
+            elif rotationKey[pygame.K_RIGHT]:
+                axis = vector3(0,1,0)   #right
+            elif rotationKey[pygame.K_UP]:
+                axis = vector3(-1,0,0)  #up
+            elif rotationKey[pygame.K_DOWN]:
+                axis = vector3(1,0,0)   #down
+            elif rotationKey[pygame.K_PAGEUP]:
+                axis = vector3(0,0,-1)  #zup
+            elif rotationKey[pygame.K_PAGEDOWN]:
+                axis = vector3(0,0,1)   #zdown
+            else:
+                angle = 0
+                axis = vector3(0,0,0)   #else stop rotation
+
+        if angle > 0:
+            axis.normalize()    #when key gets pressed (angle > 0) = axis.normalize()
+
+        # if translationKey is pressed
+        if (translationKey):
+            if translationKey[pygame.K_a]:
+                obj1.position += vector3(-0.01,0,0) #left
+            elif translationKey[pygame.K_d]:
+                obj1.position += vector3(0.01,0,0)  #right
+            elif translationKey[pygame.K_w]:
+                obj1.position += vector3(0,0.01,0)  #up
+            elif translationKey[pygame.K_s]:
+                obj1.position += vector3(0,-0.01,0)  #down
+            elif translationKey[pygame.K_q]:
+                obj1.position += vector3(0,0,0.01)  #front
+            elif translationKey[pygame.K_e]:
+                obj1.position += vector3(0,0,-0.01)  #back
+            
 
         # Clears the screen with a very dark blue (0, 0, 20)
         screen.fill((0,0,0))
