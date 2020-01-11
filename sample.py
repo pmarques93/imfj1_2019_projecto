@@ -9,6 +9,10 @@ from mesh import *
 from material import *
 from color import *
 
+class Key:
+    def __init__(self):
+        self.isPressed = False
+
 # Define a main function, just to keep things nice and tidy
 def main():
     # Initialize pygame, with the default parameters
@@ -45,9 +49,32 @@ def main():
     obj2.material = Material(color(0,1,0,1), "TestMaterial2")
     obj1.add_child(obj2)
 
+    #velocidade da rotacao
+    angle = 50
+
     # Timer
     delta_time = 0
     prev_time = time.time()
+
+    # keys
+    leftKey = False
+    rightKey = False
+    upKey = False
+    downKey = False
+    pageUpKey = False
+    pageDownKey = False
+    aKey = False
+    dKey = False
+    wKey = False
+    sKey = False
+    qKey = False
+    eKey = False
+
+    keys = [
+        leftKey, rightKey, upKey, downKey, pageUpKey, pageDownKey,
+        aKey, dKey, wKey, sKey, qKey, eKey
+    ]
+    
 
     # Game loop, runs forever
     while (True):
@@ -57,49 +84,88 @@ def main():
             if (event.type == pygame.QUIT):
                 # Exits the application immediately
                 return
+            elif (event.type == pygame.KEYDOWN):
+                if (event.key == pygame.K_LEFT):   
+                    leftKey = True
+                elif (event.key == pygame.K_RIGHT):
+                    rightKey = True
+                elif (event.key == pygame.K_UP):
+                    upKey = True
+                elif (event.key == pygame.K_DOWN):
+                    downKey = True
+                elif (event.key == pygame.K_PAGEUP):
+                    pageUpKey = True
+                elif (event.key == pygame.K_PAGEDOWN):
+                    pageDownKey = True
+                elif (event.key == pygame.K_a):   
+                    aKey = True
+                elif (event.key == pygame.K_d):
+                    dKey = True
+                elif (event.key == pygame.K_w):
+                    wKey = True
+                elif (event.key == pygame.K_s):
+                    sKey = True
+                elif (event.key == pygame.K_q):
+                    qKey = True
+                elif (event.key == pygame.K_e):
+                    eKey = True
+            elif event.type == pygame.KEYUP:
+                if (event.key == pygame.K_LEFT):
+                    leftKey = False
+                elif (event.key == pygame.K_RIGHT):
+                    rightKey = False
+                elif (event.key == pygame.K_UP):
+                    upKey = False
+                elif (event.key == pygame.K_DOWN):
+                    downKey = False
+                elif (event.key == pygame.K_PAGEUP):
+                    pageUpKey = False
+                elif (event.key == pygame.K_PAGEDOWN):
+                    pageDownKey = False
+                elif (event.key == pygame.K_a):   
+                    aKey = False
+                elif (event.key == pygame.K_d):
+                    dKey = False
+                elif (event.key == pygame.K_w):
+                    wKey = False
+                elif (event.key == pygame.K_s):
+                    sKey = False
+                elif (event.key == pygame.K_q):
+                    qKey = False
+                elif (event.key == pygame.K_e):
+                    eKey = False
 
+        if leftKey:
+            axis = vector3(0,-1,0)  #left
+        elif rightKey:
+            axis = vector3(0,1,0)   #right
+        elif upKey:
+            axis = vector3(-1,0,0)  #up
+        elif downKey:
+            axis = vector3(1,0,0)   #down
+        elif pageUpKey:
+            axis = vector3(0,0,-1)  #zup
+        elif pageDownKey:
+            axis = vector3(0,0,1)   #zdown
+        else:
+            axis = vector3(0,0,0)   #else stop rotation
+        for key in keys:
+            if key:
+                axis.normalize()    #when key gets pressed (angle > 0) = axis.normalize()
 
-        #gets key pressed
-        rotationKey = pygame.key.get_pressed()
-        translationKey = pygame.key.get_pressed()
-        
-        # if rotation key is pressed
-        if (rotationKey):
-            angle = 50
-            if rotationKey[pygame.K_LEFT]:
-                axis = vector3(0,-1,0)  #left
-            elif rotationKey[pygame.K_RIGHT]:
-                axis = vector3(0,1,0)   #right
-            elif rotationKey[pygame.K_UP]:
-                axis = vector3(-1,0,0)  #up
-            elif rotationKey[pygame.K_DOWN]:
-                axis = vector3(1,0,0)   #down
-            elif rotationKey[pygame.K_PAGEUP]:
-                axis = vector3(0,0,-1)  #zup
-            elif rotationKey[pygame.K_PAGEDOWN]:
-                axis = vector3(0,0,1)   #zdown
-            else:
-                angle = 0
-                axis = vector3(0,0,0)   #else stop rotation
+        if aKey:
+            obj1.position += vector3(-0.01,0,0) #left
+        if dKey:
+            obj1.position += vector3(0.01,0,0)  #right
+        if wKey:
+            obj1.position += vector3(0,0.01,0)  #up
+        if sKey:
+            obj1.position += vector3(0,-0.01,0)  #down
+        if qKey:
+            obj1.position += vector3(0,0,0.01)  #front
+        if eKey:
+            obj1.position += vector3(0,0,-0.01)  #back
 
-        if angle > 0:
-            axis.normalize()    #when key gets pressed (angle > 0) = axis.normalize()
-
-        # if translationKey is pressed
-        if (translationKey):
-            if translationKey[pygame.K_a]:
-                obj1.position += vector3(-0.01,0,0) #left
-            elif translationKey[pygame.K_d]:
-                obj1.position += vector3(0.01,0,0)  #right
-            elif translationKey[pygame.K_w]:
-                obj1.position += vector3(0,0.01,0)  #up
-            elif translationKey[pygame.K_s]:
-                obj1.position += vector3(0,-0.01,0)  #down
-            elif translationKey[pygame.K_q]:
-                obj1.position += vector3(0,0,0.01)  #front
-            elif translationKey[pygame.K_e]:
-                obj1.position += vector3(0,0,-0.01)  #back
-            
 
         # Clears the screen with a very dark blue (0, 0, 20)
         screen.fill((0,0,0))
