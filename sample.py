@@ -34,18 +34,18 @@ def main():
 
     # Create a cube and place it in a scene, at position (0,0,0)
     # This cube has 1 unit of side, and is red
-    obj1 = Object3d("TestObject")
+    obj1 = Object3d("NewForm")
     obj1.scale = vector3(1, 1, 1)
-    obj1.position = vector3(0, -1, 0)
-    obj1.mesh = Mesh.create_cube((1, 1, 1))
+    obj1.position = vector3(0, 0.5, 0)
+    obj1.mesh = Mesh.create_form((1, 1, 1))
     obj1.material = Material(color(1,0,0,1), "TestMaterial1")
     scene.add_object(obj1)
 
     # Create a second object, and add it as a child of the first object
     # When the first object rotates, this one will also mimic the transform
     obj2 = Object3d("ChildObject")
-    obj2.position += vector3(0, 0.75, 0)
-    obj2.mesh = Mesh.create_cube((0.5, 0.5, 0.5))
+    obj2.position += vector3(0, -0.75, 0)
+    obj2.mesh = Mesh.create_form((0.5, -0.5, 0.5))
     obj2.material = Material(color(0,1,0,1), "TestMaterial2")
     obj1.add_child(obj2)
 
@@ -173,7 +173,7 @@ def main():
         # Rotates the object, considering the time passed (not linked to frame rate)
         q = from_rotation_vector((axis * math.radians(angle) * delta_time).to_np3())
         obj1.rotation = q * obj1.rotation
-
+        
         scene.render(screen)
 
         # Swaps the back and front buffer, effectively displaying what we rendered

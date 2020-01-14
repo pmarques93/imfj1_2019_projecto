@@ -1,6 +1,7 @@
 import numpy as np
 from vector3 import *
 from quaternion import *
+from mesh import *
 
 class Object3d:
     def __init__(self, name):
@@ -16,15 +17,19 @@ class Object3d:
         return Object3d.get_prs_matrix(self.position, self.rotation, self.scale)
 
     def render(self, screen, clip_matrix):
-        world_matrix = self.get_matrix()
-        
-        mesh_matrix = world_matrix @ clip_matrix
 
-        if ((self.material != None) and (self.mesh)):
-            self.mesh.render(screen, mesh_matrix, self.material)
+
+        world_matrix = self.get_matrix()
+        mesh_matrix = world_matrix @ clip_matrix
 
         for child in self.children:
             child.render(screen, mesh_matrix)
+
+        if ((self.material != None) and (self.mesh)):
+
+            self.mesh.render(screen, mesh_matrix, self.material)
+
+        
 
     def add_child(self, obj):
         self.children.append(obj)
