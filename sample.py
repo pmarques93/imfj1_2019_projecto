@@ -9,10 +9,6 @@ from mesh import *
 from material import *
 from color import *
 
-class Key:
-    def __init__(self):
-        self.isPressed = False
-
 # Define a main function, just to keep things nice and tidy
 def main():
     # Initialize pygame, with the default parameters
@@ -40,14 +36,6 @@ def main():
     obj1.mesh = Mesh.create_Pyramid((1, 1, 1))
     obj1.material = Material(color(1,0,0,1), "TestMaterial1")
     scene.add_object(obj1)
-
-    # Create pyramid bottom part
-    obj1Bottom = Object3d("PyramidBottom")
-    obj1Bottom.scale = vector3(1, 1, 1)
-    obj1Bottom.position = vector3(0, 0, 0)
-    obj1Bottom.mesh = Mesh.create_Pyramid_Bottom((1, 1, 1))
-    obj1Bottom.material = Material(color(1,0,0,1), "TestMaterial1")
-    obj1.add_child(obj1Bottom)
 
     # Create a second object, and add it as a child of the first object
     # When the first object rotates, this one will also mimic the transform
@@ -78,12 +66,12 @@ def main():
     qKey = False
     eKey = False
 
+    # keys list
     keys = [
         leftKey, rightKey, upKey, downKey, pageUpKey, pageDownKey,
         aKey, dKey, wKey, sKey, qKey, eKey
     ]
     
-
     # Game loop, runs forever
     while (True):
         # Process OS events
@@ -95,52 +83,53 @@ def main():
             elif (event.type == pygame.KEYDOWN):
                 if (event.key == pygame.K_LEFT):   
                     leftKey = True
-                elif (event.key == pygame.K_RIGHT):
+                if (event.key == pygame.K_RIGHT):
                     rightKey = True
-                elif (event.key == pygame.K_UP):
+                if (event.key == pygame.K_UP):
                     upKey = True
-                elif (event.key == pygame.K_DOWN):
+                if (event.key == pygame.K_DOWN):
                     downKey = True
-                elif (event.key == pygame.K_PAGEUP):
+                if (event.key == pygame.K_PAGEUP):
                     pageUpKey = True
-                elif (event.key == pygame.K_PAGEDOWN):
+                if (event.key == pygame.K_PAGEDOWN):
                     pageDownKey = True
-                elif (event.key == pygame.K_a):   
+                if (event.key == pygame.K_a):   
                     aKey = True
-                elif (event.key == pygame.K_d):
+                if (event.key == pygame.K_d):
                     dKey = True
-                elif (event.key == pygame.K_w):
+                if (event.key == pygame.K_w):
                     wKey = True
-                elif (event.key == pygame.K_s):
+                if (event.key == pygame.K_s):
                     sKey = True
-                elif (event.key == pygame.K_q):
+                if (event.key == pygame.K_q):
                     qKey = True
-                elif (event.key == pygame.K_e):
+                if (event.key == pygame.K_e):
                     eKey = True
+
             elif event.type == pygame.KEYUP:
                 if (event.key == pygame.K_LEFT):
                     leftKey = False
-                elif (event.key == pygame.K_RIGHT):
+                if (event.key == pygame.K_RIGHT):
                     rightKey = False
-                elif (event.key == pygame.K_UP):
+                if (event.key == pygame.K_UP):
                     upKey = False
-                elif (event.key == pygame.K_DOWN):
+                if (event.key == pygame.K_DOWN):
                     downKey = False
-                elif (event.key == pygame.K_PAGEUP):
+                if (event.key == pygame.K_PAGEUP):
                     pageUpKey = False
-                elif (event.key == pygame.K_PAGEDOWN):
+                if (event.key == pygame.K_PAGEDOWN):
                     pageDownKey = False
-                elif (event.key == pygame.K_a):   
+                if (event.key == pygame.K_a):   
                     aKey = False
-                elif (event.key == pygame.K_d):
+                if (event.key == pygame.K_d):
                     dKey = False
-                elif (event.key == pygame.K_w):
+                if (event.key == pygame.K_w):
                     wKey = False
-                elif (event.key == pygame.K_s):
+                if (event.key == pygame.K_s):
                     sKey = False
-                elif (event.key == pygame.K_q):
+                if (event.key == pygame.K_q):
                     qKey = False
-                elif (event.key == pygame.K_e):
+                if (event.key == pygame.K_e):
                     eKey = False
 
         if leftKey:

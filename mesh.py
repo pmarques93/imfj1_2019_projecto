@@ -29,7 +29,7 @@ class Mesh:
 
             
             pygame.draw.polygon(screen, (255, 255, 255), tpoly, material.line_width)
-            #pygame.draw.polygon(screen, c, tpoly, material.fill)
+            
 
 
 
@@ -42,53 +42,30 @@ class Mesh:
         Mesh.create_triangle(vector3(size[0] * 0.5, 0, 0), vector3(0, 0, size[2] * 0.5), vector3(0, size[1] * 0.5, 0), mesh)
         Mesh.create_triangle(vector3(0, 0,  size[2] * 0.5), vector3(-size[0] * 0.5, 0), vector3(0, size[1] * 0.5, 0), mesh)
         Mesh.create_triangle(vector3(0, 0, -size[2] * 0.5), vector3( size[0] * 0.5, 0), vector3(0, size[1] * 0.5, 0), mesh)
+        #creates pyramid bottom
+        Mesh.create_square(vector3(0, -size[1] * 0.5, 0), vector3(-size[0] * 0.5, 0), vector3(0, 0, size[2] * 0.5), mesh)
 
         return mesh
 
+    #creates a pyramid
     @staticmethod
     def create_triangle(origin, axis0, axis1, mesh):
         if (mesh == None):
             mesh = Mesh("Faces")
 
         poly = []
-        p1 = (origin - origin + axis1)
-        p2 = (origin + axis0 - axis1)
-        p3 = (origin - axis0 - axis1)
-        p4 = (origin - axis0 - axis1)
-
-
-        poly.append(p1)
-        poly.append(p2)
-        poly.append(p3)
-        poly.append(p4)
-
-        #v1 = p2 - p1
-        #v2 = p3 - p1
-
-        #n = cross_product(v1,v2)
-    
-        #cameraVec = vector3(0,0,1)
-
-        #if dot_product(n, cameraVec) > 0:
+        poly.append(origin - origin + axis1)
+        poly.append(origin + axis0 - axis1)
+        poly.append(origin - axis0 - axis1)
         
+      
         mesh.polygons.append(poly)
 
         return mesh
-    
 
+    #creates a square
     @staticmethod
-    def create_Pyramid_Bottom(size, mesh = None):
-        if (mesh == None):
-            mesh = Mesh("Pyramid")
-
-        #quadrado
-        Mesh.create_bottom(vector3(0, -size[1] * 0.5, 0), vector3(-size[0] * 0.5, 0), vector3(0, 0, size[2] * 0.5), mesh)
-
-
-        return mesh
-
-    @staticmethod
-    def create_bottom(origin, axis0, axis1, mesh):
+    def create_square(origin, axis0, axis1, mesh):
         if (mesh == None):
             mesh = Mesh("PyramidBottom")
 
@@ -97,8 +74,6 @@ class Mesh:
         poly.append(origin + axis0 - axis1)
         poly.append(origin - axis0 - axis1)
         poly.append(origin - axis0 + axis1)
-
-        mesh.polygons.append(poly)
 
         mesh.polygons.append(poly)
 

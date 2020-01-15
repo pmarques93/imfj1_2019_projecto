@@ -5,5 +5,4 @@ class Material:
         self.color = color
         self.name = name
         self.line_width = 4
-        self.fill = 0
 
