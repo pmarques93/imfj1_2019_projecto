@@ -34,31 +34,33 @@ class Mesh:
 
 
     @staticmethod
-    def create_form(size, mesh = None):
+    def create_Pyramid(size, mesh = None):
         if (mesh == None):
-            mesh = Mesh("NewForm")
+            mesh = Mesh("Pyramid")
 
-        Mesh.create_quad(vector3(-size[0] * 0.5, 0, 0), vector3(0, 0, size[2] * 0.5), vector3(0, size[1] * 0.5, 0), mesh)
-        Mesh.create_quad(vector3(size[0] * 0.5, 0, 0), vector3(0, 0, size[2] * 0.5), vector3(0, size[1] * 0.5, 0), mesh)
-        Mesh.create_quad(vector3(0, 0,  size[2] * 0.5), vector3(-size[0] * 0.5, 0), vector3(0, size[1] * 0.5, 0), mesh)
-        Mesh.create_quad(vector3(0, 0, -size[2] * 0.5), vector3( size[0] * 0.5, 0), vector3(0, size[1] * 0.5, 0), mesh)
-
+        Mesh.create_triangle(vector3(-size[0] * 0.5, 0, 0), vector3(0, 0, size[2] * 0.5), vector3(0, size[1] * 0.5, 0), mesh)
+        Mesh.create_triangle(vector3(size[0] * 0.5, 0, 0), vector3(0, 0, size[2] * 0.5), vector3(0, size[1] * 0.5, 0), mesh)
+        Mesh.create_triangle(vector3(0, 0,  size[2] * 0.5), vector3(-size[0] * 0.5, 0), vector3(0, size[1] * 0.5, 0), mesh)
+        Mesh.create_triangle(vector3(0, 0, -size[2] * 0.5), vector3( size[0] * 0.5, 0), vector3(0, size[1] * 0.5, 0), mesh)
 
         return mesh
 
     @staticmethod
-    def create_quad(origin, axis0, axis1, mesh):
+    def create_triangle(origin, axis0, axis1, mesh):
         if (mesh == None):
-            mesh = Mesh("UnknownQuad")
+            mesh = Mesh("Faces")
 
         poly = []
         p1 = (origin - origin + axis1)
         p2 = (origin + axis0 - axis1)
         p3 = (origin - axis0 - axis1)
+        p4 = (origin - axis0 - axis1)
+
 
         poly.append(p1)
         poly.append(p2)
         poly.append(p3)
+        poly.append(p4)
 
         #v1 = p2 - p1
         #v2 = p3 - p1
@@ -70,8 +72,34 @@ class Mesh:
         #if dot_product(n, cameraVec) > 0:
         
         mesh.polygons.append(poly)
-            
-
 
         return mesh
     
+
+    @staticmethod
+    def create_Pyramid_Bottom(size, mesh = None):
+        if (mesh == None):
+            mesh = Mesh("Pyramid")
+
+        #quadrado
+        Mesh.create_bottom(vector3(0, -size[1] * 0.5, 0), vector3(-size[0] * 0.5, 0), vector3(0, 0, size[2] * 0.5), mesh)
+
+
+        return mesh
+
+    @staticmethod
+    def create_bottom(origin, axis0, axis1, mesh):
+        if (mesh == None):
+            mesh = Mesh("PyramidBottom")
+
+        poly = []
+        poly.append(origin + axis0 + axis1)
+        poly.append(origin + axis0 - axis1)
+        poly.append(origin - axis0 - axis1)
+        poly.append(origin - axis0 + axis1)
+
+        mesh.polygons.append(poly)
+
+        mesh.polygons.append(poly)
+
+        return mesh
