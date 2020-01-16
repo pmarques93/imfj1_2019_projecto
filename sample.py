@@ -146,9 +146,6 @@ def main():
             axis = vector3(0,0,1)   #zdown
         else:
             axis = vector3(0,0,0)   #else stop rotation
-        for key in keys:
-            if key:
-                axis.normalize()    #when key gets pressed (angle > 0) = axis.normalize()
 
         if aKey:
             obj1.position += vector3(-0.01,0,0) #left
@@ -162,6 +159,10 @@ def main():
             obj1.position += vector3(0,0,0.01)  #front
         if eKey:
             obj1.position += vector3(0,0,-0.01)  #back
+
+        for key in keys:
+            if key:
+                axis.normalize()    #when key gets pressed (angle > 0) = axis.normalize()
 
 
         # Clears the screen with a very dark blue (0, 0, 20)
