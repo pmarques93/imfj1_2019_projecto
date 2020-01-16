@@ -132,20 +132,21 @@ def main():
                 if (event.key == pygame.K_e):
                     eKey = False
 
+        axis = vector3(0,0,0)   #else stop rotation
+
         if leftKey:
-            axis = vector3(0,-1,0)  #left
-        elif rightKey:
-            axis = vector3(0,1,0)   #right
-        elif upKey:
-            axis = vector3(-1,0,0)  #up
-        elif downKey:
-            axis = vector3(1,0,0)   #down
-        elif pageUpKey:
-            axis = vector3(0,0,-1)  #zup
-        elif pageDownKey:
-            axis = vector3(0,0,1)   #zdown
-        else:
-            axis = vector3(0,0,0)   #else stop rotation
+            axis += vector3(0,-1,0)  #left
+        if rightKey:
+            axis += vector3(0,1,0)   #right
+        if upKey:
+            axis += vector3(-1,0,0)  #up
+        if downKey:
+            axis += vector3(1,0,0)   #down
+        if pageUpKey:
+            axis += vector3(0,0,-1)  #zup
+        if pageDownKey:
+            axis += vector3(0,0,1)   #zdown
+        
 
         if aKey:
             obj1.position += vector3(-0.01,0,0) #left
