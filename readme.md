@@ -36,7 +36,7 @@ A implementação das teclas para executar a translação e rotação do objecto
 
 O tópico onde surgiram algumas dúvidas foi durante a criação da forma diferente do cubo. Primeiro foi tentar perceber que parte do código tinha que alterar, após isto, foi perceber o que modificar nessa parte, de modo a criar faces triangulares com o vértice do topo inclinado para o centro da forma.
 
-Quanto à criação do *child object* não existiram grandes dificuldades, sendo que já estava praticamente feito após a criação a forma maior.
+Quanto à criação do *child object* não existiram grandes dificuldades, sendo que já estava praticamente feito após a criação da forma maior.
 
 ---
 
@@ -44,6 +44,6 @@ Quanto à criação do *child object* não existiram grandes dificuldades, sendo
 
 Pedro Miguel Marques, 21900253  |  Github Account - pmarques93
 
-Miguel Feliciano, 21904115  |  Github Account - LuisTheGomes
+Miguel Feliciano, 21904115  |  Github Account - Mike-Feliz
 
-Luís Gomes, 21901362  |  Github Account - Mike-Feliz
+Luís Gomes, 21901362  |  Github Account - LuisTheGomes
