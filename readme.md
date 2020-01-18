@@ -42,8 +42,8 @@ Quanto à criação do *child object* não existiram grandes dificuldades, sendo
 
 ## Grupo
 
-Pedro Miguel Marques, 21900253 | Github Account - pmarques93
+Pedro Miguel Marques, 21900253  |  Github Account - pmarques93
 
-Miguel Feliciano
+Miguel Feliciano, 21904115  |  Github Account - LuisTheGomes
 
-Luís Gomes
+Luís Gomes, 21901362  |  Github Account - Mike-Feliz
