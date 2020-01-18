@@ -20,9 +20,9 @@ Ao serem premidas, no caso das setas e *pageup*/*pagedown*, vão incrementar o v
 No caso das teclas de translação, são semelhantes às de rotação, incrementado o valor da *position* do objecto.
 
 #### *mesh.py*
-Para desenhar uma pirâmide, comecei por criar 3 vértices na função *create_triangle*, de modo a criar um triângulo. Criei também 4 vértices na função *create_square* para a parte inferior da forma, aproveitando o código inicialmente criado.
+Para desenhar uma pirâmide, comecei por criar 3 vértices no método *create_triangle*, de modo a criar um triângulo. Criei também 4 vértices no método *create_square* para a parte inferior da forma, aproveitando o código inicialmente criado.
 
-Com estas funções definidas de modo a criar triângulos e quadrados, a função *create_Pyramid* vai desenhar essas mesmas formas nas posições designadas, criando assim a forma em 3D.
+Com estes métodos definidos de modo a criar triângulos e quadrados, o método *create_Pyramid* vai desenhar essas mesmas formas nas posições designadas, criando assim a forma em 3D.
 
 #### *sample.py*
 Após a realização das tarefas mencionadas anteriormente, apenas modifiquei valores do *child objecto* de modo a ficar desenhado para baixo. Modifiquei também a posição do objecto principal para ficar centrado no ecrã.
