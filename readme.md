@@ -6,14 +6,16 @@
 
 ## Trabalho Realizado
 
-### Pedro Marques
-#### Por ordem de trabalho realizado
+Para esta primeira parte do projecto, foram implementadas teclas para rotação e translação do objecto e foram criadas uma pirâmide e um *child object*, sendo este uma pirâmide menor na parte inferior da pirâmide principal.
+
+### Contribuições
+### Pedro Marques - (por ordem de trabalho realizado)
 
 #### *sample.py*
-Para realizar este trabalho comecei por parar a rotação do objecto de modo a poder controlá-lo. Após isto, implementei as teclas com o objetivo de realizar a translação e rotação da forma. Para isto, foram criadas variáveis para cada tecla com o valor inicial de *False*.                                                                        
+Para realizar este trabalho comecei por parar a rotação do objecto de modo a poder controlá-lo. Após isto, implementei as teclas com o objetivo de realizar a translação e rotação da forma. Para isto, foram criadas variáveis para cada tecla com o valor inicial de *False*.    
 
 As teclas ao serem premidas vão ter o valor alterado para *True* e ao largar a tecla o valor volta para *False*.
-Ao serem premidas, no caso das setas e *pageup*/*pagedown*, vão incrementar o valor de *axis* de modo a rodar o objecto em torno de si próprio. Para qualquer uma destas teclas, ao terem o valor de *True* vão normalizar
+Ao serem premidas, no caso das setas e *pageup*/*pagedown*, vão incrementar o valor de *axis* de modo a rodar o objecto em torno de si próprio. Para qualquer uma destas teclas, ao terem o valor de *True* vão normalizar o *axis*.
 
 No caso das teclas de translação, são semelhantes às de rotação, incrementado o valor da *position* do objecto.
 
@@ -44,4 +46,4 @@ Pedro Miguel Marques, 21900253 | Github Account - pmarques93
 
 Miguel Feliciano
 
-Luís
+Luís Gomes
