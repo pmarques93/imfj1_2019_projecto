@@ -34,6 +34,7 @@ class Mesh:
         if (mesh == None):
             mesh = Mesh("Pyramid")
 
+        #creates the 4 faces of the pyramid form
         Mesh.create_triangle(vector3(-size[0] * 0.5, 0, 0), vector3(0, 0, size[2] * 0.5), vector3(0, size[1] * 0.5, 0), mesh)
         Mesh.create_triangle(vector3(size[0] * 0.5, 0, 0), vector3(0, 0, size[2] * 0.5), vector3(0, size[1] * 0.5, 0), mesh)
         Mesh.create_triangle(vector3(0, 0,  size[2] * 0.5), vector3(-size[0] * 0.5, 0), vector3(0, size[1] * 0.5, 0), mesh)
@@ -43,13 +44,14 @@ class Mesh:
 
         return mesh
 
-    #creates a pyramid
+    #creates a triangle
     @staticmethod
     def create_triangle(origin, axis0, axis1, mesh):
         if (mesh == None):
             mesh = Mesh("Faces")
 
         poly = []
+        #creates 3 vertices to create a triangle
         poly.append(origin - origin + axis1)
         poly.append(origin + axis0 - axis1)
         poly.append(origin - axis0 - axis1)
@@ -66,6 +68,7 @@ class Mesh:
             mesh = Mesh("PyramidBottom")
 
         poly = []
+        #creates 4 vertices to create a square
         poly.append(origin + axis0 + axis1)
         poly.append(origin + axis0 - axis1)
         poly.append(origin - axis0 - axis1)

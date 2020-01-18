@@ -28,7 +28,7 @@ def main():
     # Moves the camera back 2 units
     scene.camera.position -= vector3(0,0,2)
 
-    # Create a pyramid and place it in a scene, at position (0,0,0)
+    # Create a pyramid and place it in a scene, at position (0, 0.5, 0)
     # This pyramid has 1 unit of side, and is white
     obj1 = Object3d("Pyramid")
     obj1.scale = vector3(1, 1, 1)
