@@ -1,4 +1,4 @@
-# Introdução à Matemática e Física Para Videojogos I - Final Project
+# Introdução à Matemática e Física Para Videojogos I - Final Project - Parte 1
 
 ![pirâmide](https://temptempo.yolasite.com/resources/form%20-tf%20matematica.png)
 
