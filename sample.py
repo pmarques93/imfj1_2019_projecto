@@ -34,7 +34,7 @@ def main():
     obj1.scale = vector3(1, 1, 1)
     obj1.position = vector3(0, 0.5, 0)
     obj1.mesh = Mesh.create_Pyramid((1, 1, 1))
-    obj1.material = Material(color(1,0,0,1), "TestMaterial1")
+    obj1.material = Material(color(1,1,1,1), "TestMaterial1")
     scene.add_object(obj1)
 
     # Create a second object, and add it as a child of the first object
@@ -42,10 +42,10 @@ def main():
     obj2 = Object3d("ChildObject")
     obj2.position += vector3(0, -0.75, 0)
     obj2.mesh = Mesh.create_Pyramid((0.5, -0.5, 0.5))
-    obj2.material = Material(color(0,1,0,1), "TestMaterial2")
+    obj2.material = Material(color(0,1,1,1), "TestMaterial1")
     obj1.add_child(obj2)
 
-    #velocidade da rotacao
+    #rotação
     angle = 50
 
     # Timer
@@ -81,6 +81,8 @@ def main():
                 # Exits the application immediately
                 return
             elif (event.type == pygame.KEYDOWN):
+                if (event.key == pygame.K_ESCAPE):
+                    return
                 if (event.key == pygame.K_LEFT):   
                     leftKey = True
                 if (event.key == pygame.K_RIGHT):
@@ -132,7 +134,7 @@ def main():
                 if (event.key == pygame.K_e):
                     eKey = False
 
-        axis = vector3(0,0,0)   #else stop rotation
+        axis = vector3(0,0,0) #stop rotation
 
         if leftKey:
             axis += vector3(0,-1,0)  #left
@@ -146,7 +148,10 @@ def main():
             axis += vector3(0,0,-1)  #zup
         if pageDownKey:
             axis += vector3(0,0,1)   #zdown
-        
+
+        for key in keys:
+            if key:
+                axis.normalize()    #when key gets pressed (angle > 0) = axis.normalize()
 
         if aKey:
             obj1.position += vector3(-0.01,0,0) #left
@@ -157,13 +162,9 @@ def main():
         if sKey:
             obj1.position += vector3(0,-0.01,0)  #down
         if qKey:
-            obj1.position += vector3(0,0,0.01)  #front
+            obj1.position += vector3(0,0,0.01)  #back
         if eKey:
-            obj1.position += vector3(0,0,-0.01)  #back
-
-        for key in keys:
-            if key:
-                axis.normalize()    #when key gets pressed (angle > 0) = axis.normalize()
+            obj1.position += vector3(0,0,-0.01)  #front
 
 
         # Clears the screen with a very dark blue (0, 0, 20)
