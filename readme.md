@@ -27,8 +27,6 @@ Com estes métodos definidos de modo a criar triângulos e quadrados, o método 
 #### *sample.py*
 Após a realização das tarefas mencionadas anteriormente, apenas modifiquei valores do *child objecto* de modo a ficar desenhado para baixo. Modifiquei também a posição do objecto principal para ficar centrado no ecrã.
 
----
-
 ## Dificuldades
 
 Durante esta primeira parte do projecto existiram poucas dificuldades. 
